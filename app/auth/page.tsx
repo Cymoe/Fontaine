@@ -32,6 +32,9 @@ function AuthContent() {
     checkSession();
   }, [searchParams, router]);
 
+  // Get the site URL from environment, fallback to window.location.origin
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -41,7 +44,7 @@ function AuthContent() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?mode=login`,
+          emailRedirectTo: `${siteUrl}/auth/callback?mode=login`,
         },
       });
       
@@ -63,7 +66,7 @@ function AuthContent() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${siteUrl}/auth/callback`,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
@@ -72,9 +75,6 @@ function AuthContent() {
       });
       
       if (error) throw error;
-      
-      // The OAuth flow will redirect to the callback page
-      // which will handle session checking and dashboard redirect
     } catch (error: unknown) {
       const authError = error as AuthError;
       setError(authError.message || 'An error occurred');
