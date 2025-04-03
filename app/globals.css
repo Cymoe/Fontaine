@@ -1002,3 +1002,36 @@ footer {
   font-size: 18px;
   color: var(--text-light);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Font preview card styles */
+.font-preview {
+  @apply aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.font-preview:hover {
+  transform: scale(1.02);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply w-8 h-8 border-4 border-gray-200 rounded-full;
+  border-top-color: #000;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
