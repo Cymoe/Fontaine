@@ -3,15 +3,16 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/utils/supabase';
+import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 
-export default function DashboardLayout({
-  children,
-}: {
+interface DashboardLayoutProps {
   children: React.ReactNode;
-}) {
-  const [user, setUser] = useState<any>(null);
+}
+
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 

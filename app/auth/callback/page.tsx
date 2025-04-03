@@ -10,21 +10,27 @@ export default function AuthCallbackPage() {
   useEffect(() => {
     const handleCallback = async () => {
       try {
-        // Get the session - this will be set by Supabase Auth
-        const { data: { session }, error } = await supabase.auth.getSession();
-        
-        if (error) throw error;
-        
-        if (session) {
-          // We have a session, redirect to dashboard
-          router.push('/dashboard');
-        } else {
-          // No session found, redirect back to auth
-          router.push('/auth?error=Unable to sign in');
+        // Exchange the code for a session
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
+
+        if (error) {
+          throw error;
         }
-      } catch (error: any) {
+
+        if (session) {
+          // Successfully signed in, redirect to dashboard
+          router.replace('/dashboard');
+        } else {
+          // No session found
+          router.replace('/auth?error=Unable to sign in');
+        }
+      } catch (error: unknown) {
         console.error('Auth error:', error);
-        router.push('/auth?error=' + encodeURIComponent(error.message));
+        const message = error instanceof Error ? error.message : 'An error occurred';
+        router.replace('/auth?error=' + encodeURIComponent(message));
       }
     };
 

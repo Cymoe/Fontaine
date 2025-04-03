@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { supabase } from '@/utils/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { AuthError } from '@/types/supabase';
 
-export default function AuthPage() {
+function AuthContent() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,14 +41,15 @@ export default function AuthPage() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?mode=login`,
         },
       });
       
       if (error) throw error;
       alert('Check your email for the login link!');
-    } catch (error: any) {
-      setError(error.message || 'An error occurred');
+    } catch (error: unknown) {
+      const authError = error as AuthError;
+      setError(authError.message || 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -70,8 +72,12 @@ export default function AuthPage() {
       });
       
       if (error) throw error;
-    } catch (error: any) {
-      setError(error.message || 'An error occurred');
+      
+      // The OAuth flow will redirect to the callback page
+      // which will handle session checking and dashboard redirect
+    } catch (error: unknown) {
+      const authError = error as AuthError;
+      setError(authError.message || 'An error occurred');
       setLoading(false);
     }
   };
@@ -125,7 +131,7 @@ export default function AuthPage() {
         </form>
 
         <p className="terms">
-          By continuing, you agree to Fontaine's{' '}
+          By continuing, you agree to Fontaine&apos;s{' '}
           <Link href="/terms">Terms of Service</Link> and{' '}
           <Link href="/privacy">Privacy Policy</Link>
         </p>
@@ -144,5 +150,20 @@ export default function AuthPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="loading-spinner mb-4"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    }>
+      <AuthContent />
+    </Suspense>
   );
 }
