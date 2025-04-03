@@ -32,8 +32,10 @@ function AuthContent() {
     checkSession();
   }, [searchParams, router]);
 
-  // Get the site URL from environment, fallback to window.location.origin
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+  // Get site URL based on environment
+  const siteUrl = process.env.NODE_ENV === 'production'
+    ? 'https://fontaine-lemon.vercel.app'
+    : 'http://localhost:3000';
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
