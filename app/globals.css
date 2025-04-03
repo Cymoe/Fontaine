@@ -44,13 +44,36 @@ body {
 .theme-switch {
   display: flex;
   align-items: center;
-  margin-left: 16px;
   cursor: pointer;
+  color: var(--text-dark);
 }
 
 .theme-switch-icon {
   width: 20px;
   height: 20px;
+}
+
+.mobile-theme-switcher .theme-switch {
+  background-color: var(--background-alt);
+  padding: 8px 12px;
+  border-radius: 40px;
+  border: 1px solid var(--border);
+}
+
+.mobile-theme-switcher .theme-switch:hover {
+  border-color: var(--text-dark);
+}
+
+.mobile-theme-switcher {
+  display: none;
+}
+
+.desktop-theme-switcher {
+  display: block;
+}
+
+.mobile-controls {
+  display: none;
 }
 
 /* Header styles */
@@ -381,35 +404,55 @@ footer {
     align-items: center;
   }
   
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mobile-theme-switcher {
+    display: block;
+  }
+
+  .desktop-theme-switcher {
+    display: none;
+  }
+
   .mobile-menu-toggle {
     display: block;
   }
-  
+
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
     height: 100vh;
+    width: 100%;
     background-color: var(--background);
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 80px 32px;
-    gap: 24px;
+    align-items: center;
+    padding: 80px 32px 32px;
     transition: right 0.3s ease;
-    z-index: 10;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    gap: 24px;
   }
-  
-  [data-theme="dark"] .nav-links {
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+
+  .nav-links a {
+    font-size: 24px;
+    padding: 12px 0;
   }
-  
+
+  .nav-links .login-btn {
+    margin-top: 16px;
+    padding: 12px 32px;
+    border: 2px solid var(--text-dark);
+    border-radius: 40px;
+  }
+
   .nav-links.open {
     right: 0;
   }
-  
+
   .trusted-by {
     padding: 60px 0;
   }

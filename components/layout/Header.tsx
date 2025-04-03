@@ -54,15 +54,22 @@ export default function Header() {
             <span>Fontaine</span>
           </Link>
           
-          <div className="mobile-menu-toggle" onClick={toggleMenu}>
-            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-          </div>
-          
           <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
             <Link href="#features" onClick={() => setIsMenuOpen(false)}>Features</Link>
             <Link href="#pricing" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
             <Link href="#login" className="login-btn" onClick={() => setIsMenuOpen(false)}>Log in</Link>
-            <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+            <div className="desktop-theme-switcher">
+              <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+            </div>
+          </div>
+
+          <div className="mobile-controls">
+            <div className="mobile-theme-switcher">
+              <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+            </div>
+            <div className="mobile-menu-toggle" onClick={toggleMenu}>
+              {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </div>
           </div>
         </nav>
       </div>
