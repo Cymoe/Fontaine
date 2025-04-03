@@ -50,11 +50,11 @@ export default function Home() {
       <section className="hero-section">
         <div className="container">
           <h1 className="hero-title">
-            The world's largest<br />AI font library
+            The world&apos;s largest<br />AI font library
           </h1>
           <p className="hero-subtitle">
             Save thousands of dollars and research with our library of<br />
-            3,000+ font library from the world's best designers.
+            3,000+ font library from the world&apos;s best designers.
           </p>
           <div className="button-container">
             <Link href="/auth" className="primary-button">

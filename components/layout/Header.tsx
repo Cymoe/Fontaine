@@ -2,11 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
-import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import md5 from 'md5';
 
 interface HeaderProps {
@@ -36,7 +34,6 @@ const CloseIcon = () => (
 export default function Header({ isDashboard = false, user }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
   const [currentUser, setCurrentUser] = useState(user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

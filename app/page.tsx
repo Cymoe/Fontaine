@@ -53,11 +53,11 @@ export default function Home() {
         <section className="hero-section">
           <div className="container">
             <h1 className="hero-title">
-              The world's largest<br />mobile UI library
+              The world&apos;s largest<br />mobile UI library
             </h1>
             <p className="hero-subtitle">
               Save thousands of hours of research with our library of<br />
-              10,000+ mobile screens from the world's best designers.
+              10,000+ mobile screens from the world&apos;s best designers.
             </p>
             <div className="button-container">
               <Link href="/auth" className="primary-button">

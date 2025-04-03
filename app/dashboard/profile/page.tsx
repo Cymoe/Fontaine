@@ -1,10 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
-import md5 from 'md5';
 import './styles.css';
 import styles from '../dashboard.module.css';
 import Link from 'next/link';
@@ -20,7 +18,6 @@ export default function ProfilePage() {
     role: '',
   });
   const [saving, setSaving] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true); // Set dark mode as default
   const [searchQuery, setSearchQuery] = useState('');
@@ -88,26 +85,11 @@ export default function ProfilePage() {
   
   loadUser();
 
-  const getGravatarUrl = (email: string) => {
-    const hash = md5(email.trim().toLowerCase());
-    return `https://www.gravatar.com/avatar/${hash}?s=200&d=mp`;
-  };
-
-  const getUsername = (email: string) => {
-    return email.split('@')[0];
-  };
-
-  const formatDate = (date: string) => {
-    const d = new Date(date);
-    const month = d.toLocaleString('default', { month: 'long' });
-    return `${month} ${d.getFullYear()}`;
-  };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSaving(true);
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('users')
         .update({
           id: user?.id,
@@ -311,7 +293,7 @@ export default function ProfilePage() {
         <div className="profile-header">
           <div className="profile-avatar">
             <img 
-              src={`https://www.gravatar.com/avatar/${md5(user?.email || '')}`} 
+              src={`https://www.gravatar.com/avatar/${user?.email ? user.email.trim().toLowerCase() : ''}`} 
               alt="Profile" 
               className="profile-avatar-image"
             />
@@ -392,17 +374,17 @@ export default function ProfilePage() {
         <div className="profile-content">
           {activeTab === 'creations' && (
             <div className="profile-no-content-message">
-              <p>You haven't created any fonts yet.</p>
+              <p>You haven&apos;t created any fonts yet.</p>
             </div>
           )}
           {activeTab === 'collections' && (
             <div className="profile-no-content-message">
-              <p>You haven't created any collections yet.</p>
+              <p>You haven&apos;t created any collections yet.</p>
             </div>
           )}
           {activeTab === 'liked' && (
             <div className="profile-no-content-message">
-              <p>You haven't liked any fonts yet.</p>
+              <p>You haven&apos;t liked any fonts yet.</p>
             </div>
           )}
         </div>
