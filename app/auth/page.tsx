@@ -65,6 +65,9 @@ function AuthContent() {
       setError(null);
       setLoading(true);
       
+      console.log('Initiating Google sign-in...');
+      console.log('Redirect URL:', `${siteUrl}/auth/callback`);
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -76,9 +79,15 @@ function AuthContent() {
         },
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error('Google sign-in error:', error);
+        throw error;
+      }
+      
+      console.log('Google sign-in initiated, redirecting...');
     } catch (error: unknown) {
       const authError = error as AuthError;
+      console.error('Google sign-in catch error:', authError);
       setError(authError.message || 'An error occurred');
       setLoading(false);
     }

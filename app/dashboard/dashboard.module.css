@@ -1,0 +1,916 @@
+.container {
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.darkMode {
+  background-color: #1C1C1E;
+  color: #FFFFFF;
+}
+
+.lightMode {
+  background-color: white;
+  color: #000000;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+
+/* Profile and dropdown styles */
+.profileContainer {
+  position: relative;
+}
+
+.avatarButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.darkMode .avatar {
+  background-color: #3A3A3C;
+  color: white;
+}
+
+.lightMode .avatar {
+  background-color: #E5E5EA;
+  color: #3A3A3C;
+}
+
+.dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.darkMode .dropdown {
+  background-color: #2C2C2E;
+  border: 1px solid #38383A;
+}
+
+.lightMode .dropdown {
+  background-color: white;
+  border: 1px solid #E5E5EA;
+}
+
+.dropdownHeader {
+  padding: 16px;
+  text-align: center;
+}
+
+.dropdownHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.dropdownHeader p {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+.dropdownDivider {
+  height: 1px;
+  width: 100%;
+}
+
+.darkMode .dropdownDivider {
+  background-color: #38383A;
+}
+
+.lightMode .dropdownDivider {
+  background-color: #E5E5EA;
+}
+
+.themeSection {
+  padding: 16px;
+}
+
+.themeSection span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.themeOptions {
+  display: flex;
+  gap: 12px;
+}
+
+.themeOption {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.darkMode .themeOption {
+  background-color: #38383A;
+  color: #8E8E93;
+}
+
+.lightMode .themeOption {
+  background-color: #F2F2F7;
+  color: #8E8E93;
+}
+
+.themeOption.active {
+  color: white;
+}
+
+.darkMode .themeOption.active {
+  background-color: #0A84FF;
+}
+
+.lightMode .themeOption.active {
+  background-color: #007AFF;
+}
+
+.dropdownItem {
+  padding: 12px 16px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.darkMode .dropdownItem {
+  color: white;
+}
+
+.lightMode .dropdownItem {
+  color: black;
+}
+
+.darkMode .dropdownItem:hover {
+  background-color: #38383A;
+}
+
+.lightMode .dropdownItem:hover {
+  background-color: #F2F2F7;
+}
+
+.signOut {
+  color: #FF453A !important;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewToggle {
+  display: inline-flex;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.toggleButton {
+  padding: 4px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.darkMode .viewToggle {
+  background-color: #2C2C2E;
+  border: none;
+}
+
+.lightMode .viewToggle {
+  border: 1px solid #ccc;
+}
+
+.darkMode .toggleButton {
+  color: #999;
+}
+
+.darkMode .toggleButton.active {
+  background-color: #3A3A3C;
+  color: white;
+}
+
+.lightMode .toggleButton.active {
+  background-color: #f3f3f3;
+}
+
+.searchContainer {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.darkMode .searchInput {
+  background-color: #2C2C2E;
+  border: none;
+  color: white;
+}
+
+.darkMode .searchInput::placeholder {
+  color: #8E8E93;
+}
+
+.lightMode .searchInput {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.darkMode .searchIcon {
+  color: #8E8E93;
+}
+
+.lightMode .searchIcon {
+  color: #999;
+}
+
+.categoriesContainer {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.categoriesContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.filterButton, .categoryButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.darkMode .filterButton, .darkMode .categoryButton {
+  background-color: #2C2C2E;
+  border: none;
+  color: #FFFFFF;
+}
+
+.lightMode .filterButton, .lightMode .categoryButton {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.appList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.appItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.appTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.darkMode .appCategory, .darkMode .appNew {
+  color: #8E8E93;
+}
+
+.lightMode .appCategory, .lightMode .appNew {
+  color: #666;
+}
+
+.appCategory, .appNew {
+  margin: 0;
+}
+
+/* App grid styles */
+.appGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .appGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .appGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.appCard {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.darkMode .appCard {
+  background-color: #1C1C1E;
+}
+
+.lightMode .appCard {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.appCard:hover {
+  transform: translateY(-2px);
+}
+
+.darkMode .appCard:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.lightMode .appCard:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.screenshotContainer {
+  position: relative;
+  height: 0;
+  padding-bottom: 200%; /* More like iPhone aspect ratio */
+  overflow: hidden;
+  background-color: #000;
+  border-radius: 16px 16px 0 0;
+}
+
+.screenshot {
+  position: absolute;
+  top: 24px; /* Adjust for the notch header */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 24px);
+  object-fit: cover;
+  background-color: #fff;
+}
+
+.statusBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 5;
+  color: white;
+}
+
+.darkMode .statusBadge {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.lightMode .statusBadge {
+  background-color: rgba(60, 60, 67, 0.3);
+  color: white;
+}
+
+.appInfo {
+  display: flex;
+  padding: 12px;
+  align-items: center;
+}
+
+.appIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+.appDetails {
+  flex: 1;
+}
+
+.appTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.darkMode .appCategory {
+  color: #8E8E93;
+  font-size: 14px;
+  margin: 0;
+}
+
+.lightMode .appCategory {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Navigation tabs */
+.navTabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.darkMode .navTabs {
+  border-color: #38383A;
+}
+
+.lightMode .navTabs {
+  border-color: #E5E5EA;
+}
+
+.navTab {
+  padding: 8px 16px;
+  margin-right: 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.darkMode .navTab {
+  color: #8E8E93;
+}
+
+.lightMode .navTab {
+  color: #8E8E93;
+}
+
+.activeTab {
+  font-weight: 600;
+}
+
+.darkMode .activeTab {
+  color: white;
+}
+
+.lightMode .activeTab {
+  color: black;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+.darkMode .activeTab::after {
+  background-color: white;
+}
+
+.lightMode .activeTab::after {
+  background-color: black;
+}
+
+.proBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.darkMode .proBadge {
+  background-color: #FF2D55;
+  color: white;
+}
+
+.lightMode .proBadge {
+  background-color: #FF2D55;
+  color: white;
+}
+
+/* Main Header styling */
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid;
+}
+
+.darkMode .mainHeader {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.lightMode .mainHeader {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.headerCenter {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewToggleContainer {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  display: flex;
+  overflow: hidden;
+}
+
+.darkMode .viewToggleContainer {
+  background-color: #2C2C2E;
+}
+
+.lightMode .viewToggleContainer {
+  background-color: #E5E5EA;
+}
+
+.viewToggleButton {
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.darkMode .viewToggleButton {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lightMode .viewToggleButton {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.activeToggle {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+
+.darkMode .activeToggle {
+  color: white;
+}
+
+.lightMode .activeToggle {
+  color: black;
+  background-color: white;
+}
+
+/* Brand styles */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brandName {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Search styles */
+.searchContainer {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.darkMode .searchInput {
+  background-color: #2C2C2E;
+  border: none;
+  color: white;
+}
+
+.darkMode .searchInput::placeholder {
+  color: #8E8E93;
+}
+
+.lightMode .searchInput {
+  background-color: #F2F2F7;
+  border: none;
+  color: black;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.darkMode .searchIcon {
+  color: #8E8E93;
+}
+
+.lightMode .searchIcon {
+  color: #999;
+}
+
+/* Button styles */
+.iconButton {
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.darkMode .iconButton {
+  color: white;
+}
+
+.lightMode .iconButton {
+  color: black;
+}
+
+.darkMode .iconButton:hover {
+  background-color: #2C2C2E;
+}
+
+.lightMode .iconButton:hover {
+  background-color: #F2F2F7;
+}
+
+.getProButton {
+  background-color: #0A84FF;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.getProButton:hover {
+  background-color: #0070E0;
+}
+
+/* Category scroll arrow */
+.scrollArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: sticky;
+  right: 0;
+  margin-left: 8px;
+  z-index: 1;
+}
+
+.darkMode .scrollArrow {
+  background-color: #2C2C2E;
+  color: white;
+  box-shadow: -8px 0 16px rgba(28, 28, 30, 0.8);
+}
+
+.lightMode .scrollArrow {
+  background-color: white;
+  color: black;
+  box-shadow: -8px 0 16px rgba(255, 255, 255, 0.8);
+}
+
+/* Badge styles */
+.newBadge {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.updatedBadge {
+  background-color: rgba(60, 60, 67, 0.7) !important;
+}
+
+/* iPhone frame for screenshots */
+.phoneFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.phoneHeader {
+  height: 24px;
+  position: relative;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.phoneNotch {
+  width: 40%;
+  height: 18px;
+  background-color: #000;
+  border-radius: 0 0 12px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* App icons row styles */
+.appIconsRowContainer {
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.appIconsRowContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.darkMode .appIconsRowContainer {
+  border-color: #38383A;
+}
+
+.lightMode .appIconsRowContainer {
+  border-color: #E5E5EA;
+}
+
+.appIconsRow {
+  display: flex;
+  padding: 0 8px;
+  min-width: max-content;
+}
+
+.appIconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 16px;
+  width: 70px;
+}
+
+.largeAppIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.iconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.iconLabel {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Section styles */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 24px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.seeAllButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.darkMode .seeAllButton {
+  color: #0A84FF;
+}
+
+.lightMode .seeAllButton {
+  color: #007AFF;
+} 

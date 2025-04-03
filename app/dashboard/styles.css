@@ -1,0 +1,9 @@
+/* Global styles for the dashboard page */
+body.dashboard-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body.dashboard-page header {
+  display: none !important;
+} 
