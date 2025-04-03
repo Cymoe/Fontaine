@@ -11,25 +11,31 @@ function CallbackHandler() {
   useEffect(() => {
     const handleCallback = async () => {
       try {
-        // Handle the OAuth callback
         const code = searchParams.get('code');
-        if (code) {
-          await supabase.auth.exchangeCodeForSession(code);
+        const next = searchParams.get('next') || '/dashboard';
+        
+        if (!code) {
+          console.error('No code found in URL');
+          return router.replace('/auth?error=No authorization code found');
         }
 
-        // Get the session after code exchange
-        const { data: { session }, error } = await supabase.auth.getSession();
+        // Exchange the code for a session
+        const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+        if (exchangeError) {
+          throw exchangeError;
+        }
 
-        if (error) {
-          throw error;
+        // Get the session to confirm it worked
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        if (sessionError) {
+          throw sessionError;
         }
 
         if (session) {
-          // Successfully signed in, redirect to dashboard
-          router.replace('/dashboard');
+          // Successfully signed in
+          router.replace(next);
         } else {
-          // No session found
-          router.replace('/auth?error=Unable to sign in');
+          router.replace('/auth?error=Unable to sign in - No session created');
         }
       } catch (error: unknown) {
         console.error('Auth error:', error);
