@@ -248,13 +248,15 @@
 .searchContainer {
   position: relative;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .searchInput {
   width: 100%;
-  padding: 8px 12px 8px 32px;
-  border-radius: 4px;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  padding: 8px 12px 8px 36px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.3s;
 }
 
 .darkMode .searchInput {
@@ -268,14 +270,14 @@
 }
 
 .lightMode .searchInput {
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #F2F2F7;
+  border: none;
   color: black;
 }
 
 .searchIcon {
   position: absolute;
-  left: 8px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -407,58 +409,56 @@
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-.screenshotContainer {
+.appScreenshot {
   position: relative;
-  height: 0;
-  padding-bottom: 200%; /* More like iPhone aspect ratio */
-  overflow: hidden;
-  background-color: #000;
   border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  aspect-ratio: 9/16;
+  background-color: #000;
 }
 
-.screenshot {
-  position: absolute;
-  top: 24px; /* Adjust for the notch header */
-  left: 0;
+.screenshotImage {
   width: 100%;
-  height: calc(100% - 24px);
+  height: 100%;
   object-fit: cover;
-  background-color: #fff;
 }
 
-.statusBadge {
+.badge {
   position: absolute;
   top: 12px;
   left: 12px;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
-  font-weight: 600;
-  z-index: 5;
+  font-weight: 500;
   color: white;
 }
 
-.darkMode .statusBadge {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+.newBadge {
+  background-color: #34C759;
 }
 
-.lightMode .statusBadge {
-  background-color: rgba(60, 60, 67, 0.3);
-  color: white;
+.updatedBadge {
+  background-color: #5E5CE6;
 }
 
 .appInfo {
   display: flex;
-  padding: 12px;
   align-items: center;
+  padding: 12px;
+  gap: 12px;
 }
 
 .appIcon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  margin-right: 12px;
+  overflow: hidden;
+}
+
+.appIcon img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -472,16 +472,10 @@
   margin: 0 0 4px 0;
 }
 
-.darkMode .appCategory {
-  color: #8E8E93;
+.appCategory {
   font-size: 14px;
   margin: 0;
-}
-
-.lightMode .appCategory {
-  color: #666;
-  font-size: 14px;
-  margin: 0;
+  opacity: 0.7;
 }
 
 /* Navigation tabs */
@@ -577,80 +571,21 @@
   align-items: center;
   padding: 16px 0;
   margin-bottom: 24px;
-  border-bottom: 1px solid;
+  flex-wrap: wrap;
 }
 
-.darkMode .mainHeader {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.lightMode .mainHeader {
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.headerLeft {
+.headerLeft, .headerRight {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .headerCenter {
   flex: 1;
   max-width: 500px;
-  margin: 0 20px;
+  margin: 0 16px;
 }
 
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.viewToggleContainer {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  display: flex;
-  overflow: hidden;
-}
-
-.darkMode .viewToggleContainer {
-  background-color: #2C2C2E;
-}
-
-.lightMode .viewToggleContainer {
-  background-color: #E5E5EA;
-}
-
-.viewToggleButton {
-  padding: 6px 12px;
-  background: none;
-  border: none;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.darkMode .viewToggleButton {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.lightMode .viewToggleButton {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.activeToggle {
-  background-color: rgba(255, 255, 255, 0.1);
-  font-weight: 500;
-}
-
-.darkMode .activeToggle {
-  color: white;
-}
-
-.lightMode .activeToggle {
-  color: black;
-  background-color: white;
-}
-
-/* Brand styles */
 .brand {
   display: flex;
   align-items: center;
@@ -658,259 +593,289 @@
 }
 
 .brandName {
-  font-size: 18px;
   font-weight: 600;
+  font-size: 18px;
 }
 
-/* Search styles */
-.searchContainer {
-  position: relative;
-  width: 100%;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 8px 12px 8px 36px;
-  border-radius: 20px;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-
-.darkMode .searchInput {
+.viewToggleContainer {
+  display: flex;
   background-color: #2C2C2E;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.viewToggleButton {
+  padding: 6px 12px;
+  background: none;
   border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #8E8E93;
+}
+
+.activeToggle {
+  background-color: #3A3A3C;
   color: white;
 }
 
-.darkMode .searchInput::placeholder {
-  color: #8E8E93;
-}
-
-.lightMode .searchInput {
-  background-color: #F2F2F7;
-  border: none;
-  color: black;
-}
-
-.searchIcon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.darkMode .searchIcon {
-  color: #8E8E93;
-}
-
-.lightMode .searchIcon {
-  color: #999;
-}
-
-/* Button styles */
 .iconButton {
   background: none;
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  cursor: pointer;
+  color: inherit;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.darkMode .iconButton {
-  color: white;
-}
-
-.lightMode .iconButton {
-  color: black;
-}
-
-.darkMode .iconButton:hover {
-  background-color: #2C2C2E;
-}
-
-.lightMode .iconButton:hover {
-  background-color: #F2F2F7;
 }
 
 .getProButton {
   background-color: #0A84FF;
   color: white;
   border: none;
+  border-radius: 8px;
   padding: 8px 16px;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
-.getProButton:hover {
-  background-color: #0070E0;
+/* Media queries for responsive layout */
+@media (max-width: 1024px) {
+  .content {
+    padding: 16px 12px;
+  }
+  
+  .appGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .title {
+    font-size: 36px;
+  }
 }
 
-/* Category scroll arrow */
-.scrollArrow {
+@media (max-width: 768px) {
+  .mainHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .headerLeft, .headerRight {
+    justify-content: space-between;
+  }
+  
+  .headerCenter {
+    max-width: 100%;
+    margin: 12px 0;
+    order: 3;
+  }
+  
+  .appGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .getProButton {
+    display: none;
+  }
+  
+  .categoriesContainer {
+    margin: 0 -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 12px 8px;
+  }
+  
+  .headerRight {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .viewToggleContainer {
+    order: -1;
+    margin-right: auto;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .filterButton, .categoryButton {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+  
+  .appCard {
+    border-radius: 12px;
+  }
+  
+  .appTitle {
+    font-size: 18px;
+  }
+  
+  .mainHeader {
+    padding: 12px 0;
+    margin-bottom: 16px;
+  }
+  
+  .headerLeft, .headerRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .headerCenter {
+    order: 3;
+    margin: 8px 0 0 0;
+  }
+  
+  .searchInput {
+    padding: 6px 12px 6px 32px;
+    font-size: 13px;
+  }
+  
+  .navTabs {
+    margin-bottom: 16px;
+  }
+  
+  .navTab {
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  
+  .categoriesContainer {
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .appGrid {
+    gap: 16px;
+  }
+  
+  .appCard {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appScreenshot {
+    aspect-ratio: 9/19;
+  }
+  
+  .appInfo {
+    padding: 8px;
+  }
+  
+  .appIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .appTitle {
+    font-size: 14px;
+  }
+  
+  .appCategory {
+    font-size: 12px;
+  }
+  
+  .badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}
+
+/* Dark mode specific styles for mobile */
+@media (max-width: 480px) {
+  .darkMode .appCard {
+    background-color: #2C2C2E;
+  }
+  
+  .lightMode .appCard {
+    background-color: white;
+  }
+}
+
+/* Navigation tabs */
+.navTabs {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: sticky;
-  right: 0;
-  margin-left: 8px;
-  z-index: 1;
-}
-
-.darkMode .scrollArrow {
-  background-color: #2C2C2E;
-  color: white;
-  box-shadow: -8px 0 16px rgba(28, 28, 30, 0.8);
-}
-
-.lightMode .scrollArrow {
-  background-color: white;
-  color: black;
-  box-shadow: -8px 0 16px rgba(255, 255, 255, 0.8);
-}
-
-/* Badge styles */
-.newBadge {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.updatedBadge {
-  background-color: rgba(60, 60, 67, 0.7) !important;
-}
-
-/* iPhone frame for screenshots */
-.phoneFrame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.phoneHeader {
-  height: 24px;
-  position: relative;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-}
-
-.phoneNotch {
-  width: 40%;
-  height: 18px;
-  background-color: #000;
-  border-radius: 0 0 12px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* App icons row styles */
-.appIconsRowContainer {
-  margin-top: 60px;
-  padding: 20px 0;
-  border-top: 1px solid;
+  gap: 24px;
+  margin-bottom: 24px;
   overflow-x: auto;
+  padding-bottom: 8px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-.appIconsRowContainer::-webkit-scrollbar {
+.navTabs::-webkit-scrollbar {
   display: none;
 }
 
-.darkMode .appIconsRowContainer {
-  border-color: #38383A;
-}
-
-.lightMode .appIconsRowContainer {
-  border-color: #E5E5EA;
-}
-
-.appIconsRow {
-  display: flex;
-  padding: 0 8px;
-  min-width: max-content;
-}
-
-.appIconContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0 16px;
-  width: 70px;
-}
-
-.largeAppIcon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.iconImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.iconLabel {
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-/* Section styles */
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 40px 0 24px;
-}
-
-.sectionTitle {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.seeAllButton {
+.navTab {
+  padding: 8px 0;
   background: none;
   border: none;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  padding: 0;
+  position: relative;
+  white-space: nowrap;
 }
 
-.darkMode .seeAllButton {
-  color: #0A84FF;
+.darkMode .navTab {
+  color: #8E8E93;
 }
 
-.lightMode .seeAllButton {
-  color: #007AFF;
-} 
+.lightMode .navTab {
+  color: #8E8E93;
+}
+
+.navTab.active {
+  color: inherit;
+}
+
+.navTab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.navTab.pro::after {
+  content: 'PRO';
+  position: absolute;
+  top: -8px;
+  right: -16px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: #FF9500;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .navTabs {
+    gap: 16px;
+  }
+  
+  .navTab {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navTabs {
+    gap: 12px;
+  }
+}
