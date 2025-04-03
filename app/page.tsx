@@ -7,11 +7,13 @@ import TrustedBy from '@/components/layout/TrustedBy';
 import Features from '@/components/layout/Features';
 import CTA from '@/components/layout/CTA';
 import Footer from '@/components/layout/Footer';
+import SupabaseTest from '@/components/SupabaseTest';
 
 export default function Home() {
   return (
     <main>
       <Header />
+      <SupabaseTest />
       <Hero />
       <Demo />
       <TrustedBy />
