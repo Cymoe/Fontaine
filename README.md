@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fontaine - Custom Font Generation Tool
+
+A Next.js application for a custom font generation tool that creates unique typography to match a user's brand identity.
+
+## Features
+
+- Modern, component-based UI with Next.js
+- Light and dark mode support with theme persistence
+- Responsive design that works on all devices
+- Server-side rendering for better performance and SEO
+- Custom components without relying on UI libraries
+- SVG icons and illustrations
+- API routes for backend integrations (coming soon)
+
+## Tech Stack
+
+- **Next.js** - React framework with server components
+- **TypeScript** - For type safety
+- **CSS Variables** - For theming
+- **Next.js Image Optimization** - For optimized image loading
+- **React Server Components** - For better performance
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository and install dependencies:
+
+```bash
+git clone <your-repo-url>
+cd fontaine-next
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/app` - Next.js app directory with layout and page components
+- `/components` - React components organized by type
+  - `/layout` - Layout components like Header, Footer, etc.
+  - `/ui` - Reusable UI components
+- `/public` - Static assets including images
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+### Adding New Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To add new features to the application:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create appropriate components in the `/components` directory
+2. Import and use them in relevant pages
+3. Add necessary styles to the global CSS or component-specific CSS
 
-## Deploy on Vercel
+### Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project uses CSS variables for theming, defined in `app/globals.css`. To modify the theme:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Update the variables in the `:root` selector for light mode
+2. Update the variables in the `[data-theme="dark"]` selector for dark mode
+
+## Deployment
+
+The application can be deployed on Vercel or any other platform that supports Next.js:
+
+```bash
+npm run build
+```
+
+## Future Enhancements
+
+- Add font generation API integration
+- Implement user authentication
+- Create a dashboard for font management
+- Add font preview and customization tools
+
+## License
+
+[MIT](LICENSE)
