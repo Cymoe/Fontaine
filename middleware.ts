@@ -33,6 +33,11 @@ export async function middleware(request: NextRequest) {
 
   const { data: { session } } = await supabase.auth.getSession();
 
+  // Allow access to auth callback regardless of session state
+  if (request.nextUrl.pathname.startsWith('/auth/callback')) {
+    return response;
+  }
+
   // If user is signed in and trying to access auth page, redirect to dashboard
   if (session && request.nextUrl.pathname.startsWith('/auth')) {
     const redirectUrl = new URL('/dashboard', request.url);
@@ -42,7 +47,6 @@ export async function middleware(request: NextRequest) {
   // If user is not signed in and trying to access dashboard, redirect to auth
   if (!session && request.nextUrl.pathname.startsWith('/dashboard')) {
     const redirectUrl = new URL('/auth', request.url);
-    redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname)
     return NextResponse.redirect(redirectUrl);
   }
 
@@ -50,5 +54,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/auth/:path*', '/dashboard/:path*'],
 };
