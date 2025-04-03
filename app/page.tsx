@@ -33,38 +33,42 @@ const fonts = [
   { id: 2, name: 'Artist name', price: 2.99, isNew: true },
   { id: 3, name: 'Artist name', price: 2.99, isUpdated: true },
   { id: 4, name: 'Artist name', price: 2.99, isUpdated: true },
-  // Add more fonts as needed
+  { id: 5, name: 'Artist name', price: 2.99, isTopTen: true },
+  { id: 6, name: 'Artist name', price: 2.99, isNew: true },
+  { id: 7, name: 'Artist name', price: 2.99, isUpdated: true },
+  { id: 8, name: 'Artist name', price: 2.99, isTopTen: true },
+  { id: 9, name: 'Artist name', price: 2.99, isNew: true },
+  { id: 10, name: 'Artist name', price: 2.99, isUpdated: true },
+  { id: 11, name: 'Artist name', price: 2.99, isTopTen: true },
+  { id: 12, name: 'Artist name', price: 2.99, isNew: true },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main>
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 pt-20 pb-16">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold mb-6">
+      <section className="hero-section">
+        <div className="container">
+          <h1 className="hero-title">
             The world's largest<br />AI font library
           </h1>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="hero-subtitle">
             Save thousands of dollars and research with our library of<br />
             3,000+ font library from the world's best designers.
           </p>
-          <div className="flex justify-center gap-4 mb-12">
-            <Link 
-              href="/auth"
-              className="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition"
-            >
+          <div className="button-container">
+            <Link href="/auth" className="primary-button">
               Create free account
             </Link>
-            <button className="text-gray-600 px-6 py-3 hover:text-gray-800">
+            <button className="secondary-button">
               See all plans
             </button>
           </div>
 
           {/* Brand Logos */}
-          <div className="flex justify-center items-center gap-8 flex-wrap">
+          <div className="brand-logos">
             {brands.map((brand) => (
-              <div key={brand.name} className="w-16 h-16 relative">
+              <div key={brand.name} className="brand-logo">
                 <Image
                   src={brand.logo}
                   alt={brand.name}
@@ -78,58 +82,58 @@ export default function Home() {
       </section>
 
       {/* Discovery Section */}
-      <section className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-2xl font-semibold mb-6">Discover</h2>
-        
-        {/* Categories */}
-        <div className="flex gap-4 overflow-x-auto pb-4 mb-8 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className="whitespace-nowrap px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+      <section className="discover-section">
+        <div className="container">
+          <h2 className="section-title">Discover</h2>
+          
+          {/* Categories */}
+          <div className="categories">
+            {categories.map((category, index) => (
+              <button
+                key={category}
+                className={`category-button ${index === 0 ? 'active' : ''}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-        {/* Font Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {fonts.map((font) => (
-            <div key={font.id} className="group">
-              <div className="aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
-                <div className="absolute top-4 left-4 flex gap-2">
+          {/* Font Grid */}
+          <div className="font-grid">
+            {fonts.map((font) => (
+              <div key={font.id} className="font-card">
+                <div className="font-preview">
                   {font.isTopTen && (
-                    <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">
+                    <span className="badge badge-pink">
                       Top 10
                     </span>
                   )}
                   {font.isNew && (
-                    <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm">
+                    <span className="badge badge-green">
                       New & Fresh
                     </span>
                   )}
                   {font.isUpdated && (
-                    <span className="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">
+                    <span className="badge badge-purple">
                       Updated
                     </span>
                   )}
+                  <div className="font-sample">
+                    Aa
+                    <br />
+                    123
+                  </div>
                 </div>
-                <div className="flex items-center justify-center h-full text-4xl font-bold">
-                  Aa
-                  <br />
-                  123
+                <div className="font-info">
+                  <div className="artist">
+                    <div className="artist-avatar"></div>
+                    <span className="artist-name">{font.name}</span>
+                  </div>
+                  <span className="font-price">${font.price}</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
-                  <span className="text-sm font-medium">{font.name}</span>
-                </div>
-                <span className="text-sm font-medium">${font.price}</span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </main>
