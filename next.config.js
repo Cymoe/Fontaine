@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     domains: ['www.gravatar.com'],
   },
-};
+  output: 'standalone',
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
